@@ -4,12 +4,12 @@ import os
 
 def launch_turtlebot3_gazebo():
     command = "ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py"
-    subprocess.Popen(command, shell=True)
+    subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', command])
 
 def launch_turtlebot3_navigation2():
     home_dir = os.path.expanduser("~")
     command = f"ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:={home_dir}/map.yaml"
-    subprocess.Popen(command, shell=True)
+    subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', command])
 
 app = tk.Tk()
 app.title("ROS 2 Launcher")
@@ -24,4 +24,3 @@ navigation_button = tk.Button(frame, text="Launch Turtlebot3 Navigation2", comma
 navigation_button.pack(pady=5)
 
 app.mainloop()
-
