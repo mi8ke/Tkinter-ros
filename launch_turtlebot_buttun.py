@@ -21,6 +21,10 @@ def launch_rviz2():
         command = f"rviz2 -d {rviz_file_path}"
         subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', command])
 
+def colcon_build():
+    command = "cd ~/ros2_ws && colcon build --symlink-install; exec bash"
+    subprocess.Popen(['gnome-terminal', '--', 'bash', '-c', command])
+
 app = tk.Tk()
 app.title("ROS 2 Launcher")
 
@@ -34,6 +38,9 @@ navigation_button = tk.Button(frame, text="Launch Turtlebot3 Navigation2", comma
 navigation_button.pack(pady=5)
 
 rviz_button = tk.Button(frame, text="Launch RViz2", command=launch_rviz2)
+rviz_button.pack(pady=5)
+
+rviz_button = tk.Button(frame, text="colcon build", command=colcon_build)
 rviz_button.pack(pady=5)
 
 app.mainloop()
